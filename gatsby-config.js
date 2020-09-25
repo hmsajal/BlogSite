@@ -1,15 +1,21 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Personal Blog of Sajal`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Hasan Mahmud Sajal`,
+      summary: `I am a JavaScript developer and a casual blogger.`,
+      personalSite: `https://hmsajal.netlify.app`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `A starter blog based on Kyle Mathews's starter blog.`,
+    siteUrl: `https://hmsblog.netlify.app/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `sajal_here`,
     },
+    menuItems: [
+      { name: `All Posts`, link: `posts` },
+      { name: `Categories`, link: `categories` },
+      { name: `Contact`, link: `contact` },
+    ],
   },
   plugins: [
     {
@@ -69,6 +75,7 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
