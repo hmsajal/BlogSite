@@ -33,7 +33,7 @@ export const mdPageQuery = graphql`
         }
         timeToRead
         frontmatter {
-          date(formatString: "DD MMM, YYYY")
+          date
           title
         }
       }

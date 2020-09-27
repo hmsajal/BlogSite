@@ -12,9 +12,9 @@ module.exports = {
       twitter: `sajal_here`,
     },
     menuItems: [
-      { name: `All Posts`, link: `posts` },
-      { name: `Categories`, link: `categories` },
-      { name: `Contact`, link: `contact` },
+      { name: `Posts`, path: `/posts` },
+      { name: `Categories`, path: `/categories` },
+      { name: `Contact`, path: `/contact` },
     ],
   },
   plugins: [

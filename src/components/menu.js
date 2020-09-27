@@ -1,34 +1,40 @@
 import React from "react"
-import { Link, useStaticQuery } from "gatsby"
 
-const Menu = () => {
+import { useStaticQuery, Link } from "gatsby"
+
+import styles from "./layout.module.scss"
+
+const Menu = ({ location }) => {
   const data = useStaticQuery(graphql`
     query MenuQuery {
       site {
         siteMetadata {
           menuItems {
-            link
+            path
             name
           }
         }
       }
     }
   `)
+
   const items = data.site.siteMetadata.menuItems
+
   return (
-    <div>
+    <div className={styles.menu}>
       {items.map((ele, i) => (
-        <Button key={i} buttonProp={ele} />
+        <Link
+          key={i}
+          to={ele.path}
+          className={styles.menuLink}
+          getProps={({ isCurrent }) =>
+            isCurrent ? { className: `active-menu-item` } : {}
+          }
+        >
+          {ele.name}
+        </Link>
       ))}
     </div>
-  )
-}
-
-export const Button = ({ buttonProp }) => {
-  return (
-    <Link to={buttonProp.link} className="menu-button">
-      {buttonProp.name}
-    </Link>
   )
 }
 

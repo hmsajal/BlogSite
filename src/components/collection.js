@@ -10,7 +10,19 @@ const Collection = ({ posts }) => {
     </p>
   ) : (
     posts.map(post => {
+      const options = {
+        day: "numeric",
+        month: "numeric",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      }
       const title = post.frontmatter.title || post.fields.slug
+      const date = new Date(post.frontmatter.date).toLocaleString(
+        "en-GB",
+        options
+      )
       return (
         <article
           key={post.fields.slug}
@@ -24,7 +36,7 @@ const Collection = ({ posts }) => {
                 <span itemProp="headline">{title}</span>
               </Link>
             </h2>
-            <small>{post.frontmatter.date}</small>
+            <small>{date}</small>
           </header>
           <section>
             <p
