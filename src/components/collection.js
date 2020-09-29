@@ -42,7 +42,7 @@ const Collection = ({ posts }) => {
               <span className={styles.tags}>
                 {tags.map((item, i, arr) => (
                   <Fragment key={i}>
-                    <Link to="/tag">{item}</Link>
+                    <Link to="/categories">{item}</Link>
                     {arr.length !== arr.indexOf(item) + 1 ? `, ` : ` `}
                   </Fragment>
                 ))}
