@@ -1,5 +1,7 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { Link } from "gatsby"
+
+import styles from "./collection.module.scss"
 
 const Collection = ({ posts }) => {
   return posts.length === 0 ? (
@@ -14,19 +16,18 @@ const Collection = ({ posts }) => {
         day: "numeric",
         month: "numeric",
         year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
       }
       const title = post.frontmatter.title || post.fields.slug
       const date = new Date(post.frontmatter.date).toLocaleString(
         "en-GB",
         options
       )
+      const tags = post.frontmatter.tags
+
       return (
         <article
           key={post.fields.slug}
-          className="post-list-item"
+          className={styles.postListItem}
           itemScope
           itemType="http://schema.org/Article"
         >
@@ -36,7 +37,17 @@ const Collection = ({ posts }) => {
                 <span itemProp="headline">{title}</span>
               </Link>
             </h2>
-            <small>{date}</small>
+            <small>
+              <span className={styles.smallDate}>{date}</span>
+              <span className={styles.tags}>
+                {tags.map((item, i, arr) => (
+                  <Fragment key={i}>
+                    <Link to="/tag">{item}</Link>
+                    {arr.length !== arr.indexOf(item) + 1 ? `, ` : ` `}
+                  </Fragment>
+                ))}
+              </span>
+            </small>
           </header>
           <section>
             <p

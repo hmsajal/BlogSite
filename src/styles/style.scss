@@ -177,31 +177,6 @@ a:focus {
 
 /* Custom classes */
 
-.post-list-item {
-  margin-bottom: var(--spacing-8);
-  margin-top: var(--spacing-8);
-}
-
-.post-list-item p {
-  margin-bottom: var(--spacing-0);
-}
-
-.post-list-item h2 {
-  font-size: var(--fontSize-4);
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-2);
-  margin-top: var(--spacing-0);
-}
-
-.post-list-item header {
-  margin-bottom: var(--spacing-4);
-}
-
-.active-menu-item {
-  color: var(--menu-active-color);
-  margin-right: var(--spacing-8);
-}
-
 .bio {
   display: flex;
   margin-top: var(--spacing-8);

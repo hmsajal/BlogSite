@@ -4,7 +4,7 @@ import { useStaticQuery, Link } from "gatsby"
 
 import styles from "./layout.module.scss"
 
-const Menu = ({ location }) => {
+const Menu = () => {
   const data = useStaticQuery(graphql`
     query MenuQuery {
       site {
@@ -28,7 +28,7 @@ const Menu = ({ location }) => {
           to={ele.path}
           className={styles.menuLink}
           getProps={({ isCurrent }) =>
-            isCurrent ? { className: `active-menu-item` } : {}
+            isCurrent ? { className: styles.activeMenuLink } : {}
           }
         >
           {ele.name}

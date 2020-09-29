@@ -16,15 +16,29 @@
   font-weight: var(--fontWeight-bold);
   font-family: var(--font-heading);
   text-decoration: none;
-  font-size: var(--fontSize-2);
-  color: #3d998a;
+  font-size: var(--fontSize-3);
+  color: var(--color-heading);
 }
 
 .menu {
   margin: var(--spacing-10) var(--spacing-0);
 }
 
-.menuLink {
+.menuLinkCommon {
   margin-right: var(--spacing-8);
+  text-decoration: none;
+  font-size: var(--menu-fontSize);
+  font-style: italic;
+}
+.menuLink {
+  composes: menuLinkCommon;
   color: var(--menu-link-color);
+  &:hover {
+    text-decoration: underline;
+    color: var(--menu-hover-color);
+  }
+}
+.activeMenuLink {
+  composes: menuLinkCommon;
+  color: var(--menu-active-color);
 }

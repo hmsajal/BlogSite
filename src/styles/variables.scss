@@ -47,7 +47,7 @@
   --fontSize-0: 0.833rem;
   --fontSize-1: 1rem;
   --fontSize-2: 1.2rem;
-  --fontSize-3: 1.44rem;
+  --fontSize-3: 1.42rem;
   --fontSize-4: 1.728rem;
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
@@ -58,8 +58,11 @@
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
+  --post-heading-color: #487088;
 
   /*components' styles*/
-  --menu-active-color: #330066;
-  --menu-link-color: rgb(67, 142, 165);
+  --menu-fontSize: 1.035rem;
+  --menu-link-color: #717171;
+  --menu-hover-color: #3d3d3d;
+  --menu-active-color: #1b1b1b;
 }

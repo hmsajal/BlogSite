@@ -1,6 +1,7 @@
 ---
 title: Start with 'why'
 date: "2020-09-26T21:00:03.284Z"
+tags: ["my story", "first"]
 description: "Start with why"
 ---
 

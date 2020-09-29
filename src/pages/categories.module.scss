@@ -1,0 +1,10 @@
+.ul li {
+  list-style-position: inside;
+}
+.ul li a {
+  text-transform: capitalize;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
