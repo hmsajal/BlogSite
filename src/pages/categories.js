@@ -14,7 +14,7 @@ const Categories = ({ data, location }) => {
 
   return (
     <Layout location={location} title={title}>
-      <SEO title="All posts" />
+      <SEO title="Categories" />
       <ul className={styles.ul}>
         {tags.map((item, i) => (
           <li key={i}>
