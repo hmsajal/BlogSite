@@ -1,19 +1,29 @@
 backend:
   name: github
   repo: hmsajal/BlogSite
-#publish_mode: "editorial_workflow"
+publish_mode: "editorial_workflow"
 media_folder: static/assets
 public_folder: /assets
 collections:
   - name: blog
     label: Blog
-    folder: blog
+    folder: static/blog
     create: true
     fields:
-      - { name: "layout", label: "Layout", widget: "hidden", default: "blog" }
+      - { name: "layout", label: "Layout", default: "blog" }
       - { name: "title", label: "Title", widget: "string" }
-      - { name: "tags", label: "Tags", widget: "string" }
-      - { name: "path", label: "Path" }
+      - name: "tags"
+        label: "Tags"
+        widget: "string"
+        # fileds:
+        #   - { name: "tag1", label: "tag1", widget: "string" }
+        #   - { name: "tag2", label: "tag2", widget: "string" }
+        #   - { name: "tag3", label: "tag3", widget: "string" }
       - { name: "date", label: "Date", widget: "datetime" }
       - { name: "body", label: "Body", widget: "markdown" }
-      - { name: "thumbnail", label: "Featured Image", widget: "image" }
+      - {
+          name: "thumbnail",
+          label: "Featured Image",
+          widget: "image",
+          required: false,
+        }
