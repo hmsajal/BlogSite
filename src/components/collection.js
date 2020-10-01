@@ -1,9 +1,12 @@
 import React, { Fragment } from "react"
 import { Link } from "gatsby"
 
+import useTagScraper from "./useTagScraper"
 import styles from "./collection.module.scss"
 
 const Collection = ({ posts }) => {
+  let tagmarks = useTagScraper(val => val)
+
   return posts.length === 0 ? (
     <p>
       No blog posts found. Add markdown posts to "content/blog" (or the
@@ -22,7 +25,7 @@ const Collection = ({ posts }) => {
         "en-GB",
         options
       )
-      const tags = post.frontmatter.tags
+      const tags = tagmarks(post.frontmatter.tags)
 
       return (
         <article

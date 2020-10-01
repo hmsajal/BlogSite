@@ -8,9 +8,10 @@ import styles from "./categories.module.scss"
 
 const Categories = ({ data, location }) => {
   const items = data.allMarkdownRemark.nodes
+  let tagItems = items.map(item => item.frontmatter.tags)
   const title = data.site.siteMetadata.title
 
-  const tags = useTagScraper(items)
+  const tags = useTagScraper(tagItems)
 
   return (
     <Layout location={location} title={title}>
