@@ -1,10 +1,7 @@
 ---
 layout: blog
-title: My First Blog from Netlify CMS for My Gatsby Blog.
-tags:
-  - CMS
-  - gatsby
-  - blogging
+title: My First Blog from Netlify CMS.
+tags: List [ "CMS", "gatsby", "blogging" ]
 path: blogoncms
 date: 2020-09-30T19:15:24.086Z
 thumbnail: ""
