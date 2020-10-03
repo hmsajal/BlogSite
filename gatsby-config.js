@@ -95,7 +95,7 @@ module.exports = {
     `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-source-contentful`,
-      options: `contentfulConfig`,
+      options: contentfulConfig,
     },
   ],
 }
