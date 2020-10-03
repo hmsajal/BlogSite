@@ -70,3 +70,6 @@ yarn-error.log
 
 # .vscode directory
 .vscode/
+
+#environment variable for contentful
+.env.development
