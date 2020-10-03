@@ -1,3 +1,18 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+const contentfulConfig = {
+  spaceId: process.env.contentful_SPACE_ID,
+  accessToken: process.env.contentful_ACCESS_TOKEN,
+}
+const { spaceId, accessToken } = contentfulConfig
+
+if (!spaceId || !accessToken) {
+  throw new Error(
+    "Contentful spaceId and the access token need to be provided."
+  )
+}
+
 module.exports = {
   siteMetadata: {
     title: `Personal Blog of Sajal`,
@@ -78,8 +93,9 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify-cms`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: `contentfulConfig`,
+    },
   ],
 }
