@@ -38,20 +38,10 @@ module.exports = {
     ],
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: `${__dirname}/static/blog`,
-    //     name: `blog`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: `${__dirname}/static/assets`,
-    //     name: `assets`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: contentfulConfig,
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -77,13 +67,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
-    `gatsby-plugin-feed`,
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Gatsby Starter Blog`,
@@ -98,9 +81,5 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify-cms`,
-    {
-      resolve: `gatsby-source-contentful`,
-      options: contentfulConfig,
-    },
   ],
 }

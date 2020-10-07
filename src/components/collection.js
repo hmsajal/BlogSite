@@ -1,7 +1,6 @@
 import React, { Fragment } from "react"
 import { Link } from "gatsby"
 
-import useTagScraper from "./useTagScraper"
 import styles from "./collection.module.scss"
 
 const Collection = ({ posts }) => {
@@ -18,13 +17,10 @@ const Collection = ({ posts }) => {
         month: "numeric",
         year: "numeric",
       }
-      const title = post.frontmatter.title || post.fields.slug
-      const date = new Date(post.frontmatter.date).toLocaleString(
-        "en-GB",
-        options
-      )
+      const title = post.title || post.fields.slug
+      const date = new Date(post.date).toLocaleString("en-GB", options)
 
-      const tags = post.frontmatter.tags.split(/[\s]*,[\s]*/gi)
+      const tags = post.categories.split(/[\s]*,[\s]*/gi)
 
       return (
         <article
@@ -54,7 +50,9 @@ const Collection = ({ posts }) => {
           <section>
             <p
               dangerouslySetInnerHTML={{
-                __html: post.frontmatter.description || post.excerpt,
+                __html:
+                  post.internal.description ||
+                  post.markdown.childMarkdownRemark.excerpt,
               }}
               itemProp="description"
             />

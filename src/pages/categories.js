@@ -1,14 +1,14 @@
 import React from "react"
 
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import useTagScraper from "../components/useTagScraper"
 import styles from "./categories.module.scss"
 
 const Categories = ({ data, location }) => {
-  const items = data.allMarkdownRemark.nodes
-  let tagItems = items.map(item => item.frontmatter.tags)
+  const items = data.allContentfulBlogPost.nodes
+  let tagItems = items.map(item => item.categories)
   const title = data.site.siteMetadata.title
 
   const tags = useTagScraper(tagItems)
@@ -36,11 +36,9 @@ export const categoriesQuery = graphql`
         title
       }
     }
-    allMarkdownRemark {
+    allContentfulBlogPost {
       nodes {
-        frontmatter {
-          tags
-        }
+        categories
       }
     }
   }
