@@ -7,9 +7,9 @@ import useTagScraper from "../components/useTagScraper"
 import styles from "./categories.module.scss"
 
 const Categories = ({ data, location }) => {
-  const items = data.allContentfulBlogPost.nodes
-  let tagItems = items.map(item => item.categories)
   const title = data.site.siteMetadata.title
+  const items = data.allContentfulBlogPost.edges
+  let tagItems = items.map(({ node }) => node.categories)
 
   const tags = useTagScraper(tagItems)
 
@@ -37,8 +37,10 @@ export const categoriesQuery = graphql`
       }
     }
     allContentfulBlogPost {
-      nodes {
-        categories
+      edges {
+        node {
+          categories
+        }
       }
     }
   }

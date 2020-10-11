@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Collection from "../components/collection"
 
 const Posts = ({ data, location }) => {
-  const allposts = data.allContentfulBlogPost.nodes
+  const allposts = data.allContentfulBlogPost.edges
   const title = data.site.siteMetadata?.title || `Sajal's Blog`
   return (
     <Layout location={location} title={title}>
@@ -26,16 +26,19 @@ export const mdPageQuery = graphql`
       }
     }
     allContentfulBlogPost(sort: { fields: createdAt, order: DESC }) {
-      nodes {
-        title
-        categories
-        date
-        internal {
-          description
-        }
-        mainText {
-          childMarkdownRemark {
-            excerpt
+      edges {
+        node {
+          title
+          categories
+          date
+          slug
+          internal {
+            description
+          }
+          mainText {
+            childMarkdownRemark {
+              excerpt
+            }
           }
         }
       }

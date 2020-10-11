@@ -11,27 +11,27 @@ const Collection = ({ posts }) => {
       gatsby-config.js).
     </p>
   ) : (
-    posts.map(post => {
+    posts.map(({ node }) => {
       const options = {
         day: "numeric",
         month: "numeric",
         year: "numeric",
       }
-      const title = post.title || post.fields.slug
-      const date = new Date(post.date).toLocaleString("en-GB", options)
+      const title = node.title || node.slug
+      const date = new Date(node.date).toLocaleString("en-GB", options)
 
-      const tags = post.categories.split(/[\s]*,[\s]*/gi)
+      const tags = node.categories
 
       return (
         <article
-          key={post.fields.slug}
+          key={node.slug}
           className={styles.postListItem}
           itemScope
           itemType="http://schema.org/Article"
         >
           <header>
             <h2>
-              <Link to={post.fields.slug} itemProp="url">
+              <Link to={`/post/${node.slug}`} itemProp="url">
                 <span itemProp="headline">{title}</span>
               </Link>
             </h2>
@@ -41,7 +41,7 @@ const Collection = ({ posts }) => {
                 {tags.map((item, i, arr) => (
                   <Fragment key={i}>
                     <Link to="/categories">{item}</Link>
-                    {arr.length !== arr.indexOf(item) + 1 ? `, ` : ` `}
+                    {arr.indexOf(item) + 1 !== arr.length ? `, ` : ` `}
                   </Fragment>
                 ))}
               </span>
@@ -51,8 +51,8 @@ const Collection = ({ posts }) => {
             <p
               dangerouslySetInnerHTML={{
                 __html:
-                  post.internal.description ||
-                  post.markdown.childMarkdownRemark.excerpt,
+                  node.internal.description ||
+                  node.mainText.childMarkdownRemark.excerpt,
               }}
               itemProp="description"
             />

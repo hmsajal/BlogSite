@@ -1,5 +1,4 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -9,29 +8,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     {
       allContentfulBlogPost {
-        nodes {
-          date(formatString: "DD-MM-YY-T-hh:mm:ssa")
+        edges {
+          node {
+            title
+            slug
+          }
         }
       }
     }
   `)
-  // `
-  //   {
-  //     allMarkdownRemark(
-  //       sort: { fields: [frontmatter___date], order: DESC }
-  //       limit: 1000
-  //     ) {
-  //       nodes {
-  //         fields {
-  //           slug
-  //         }
-  //         frontmatter {
-  //           title
-  //         }
-  //       }
-  //     }
-  //   }
-  // `
 
   if (result.errors) {
     reporter.panicOnBuild(
@@ -41,18 +26,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.allContentfulBlogPost.nodes
+  const edges = result.data.allContentfulBlogPost.edges
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1]
-      const next = index === 0 ? null : posts[index - 1]
+  if (edges.length > 0) {
+    edges.forEach(({ node }, index, edges) => {
+      
+      const previous = index === 0 ? null : edges[index - 1].node
+      const next = index === edges.length - 1 ? null : edges[index + 1].node
+      const slug = node.slug
 
       createPage({
-        path: `/posts/${post.date}`,
+        path: `post/${slug}`,
         component: blogPost,
         context: {
-          slug: post.date,
+          slug:`${slug}`,
           previous,
           next,
         },
@@ -61,61 +48,51 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `ContentfulBlogPost`) {
-    const value = createFilePath({ node, getNode })
+// exports.onCreateNode = ({ node, actions }) => {
+//   const { createNodeField } = actions
+//   const value = node.context.slug
+//   if (node.internal.type === `ContentfulBlogPost`) {
+//     createNodeField({
+//       name: `slug`,
+//       node,      
+//       value,
+//     })
+//   }
+// }
 
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-  // if (node.internal.type === `MarkdownRemark`) {
-  //   const value = createFilePath({ node, getNode })
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions
 
-  //   createNodeField({
-  //     name: `slug`,
-  //     node,
-  //     value,
-  //   })
-  // }
-}
+//   createTypes(`
+//     type SiteSiteMetadata {
+//       author: Author
+//       siteUrl: String
+//       social: Social      
+//     }
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
+//     type Author {
+//       name: String
+//       summary: String
+//       personalSite: String
+//     }
 
-  createTypes(`
-    type SiteSiteMetadata {
-      author: Author
-      siteUrl: String
-      social: Social      
-    }
+//     type Social {
+//       twitter: String
+//     }    
 
-    type Author {
-      name: String
-      summary: String
-      personalSite: String
-    }
+//     type MarkdownRemark implements Node {
+//       frontmatter: Frontmatter
+//       fields: Fields
+//     }
 
-    type Social {
-      twitter: String
-    }    
+//     type Frontmatter {
+//       title: String
+//       description: String
+//       date: Date @dateformat
+//     }
 
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter
-      fields: Fields
-    }
-
-    type Frontmatter {
-      title: String
-      description: String
-      date: Date @dateformat
-    }
-
-    type Fields {
-      slug: String
-    }
-  `)
-}
+//     type Fields {
+//       slug: String
+//     }
+//   `)
+// }

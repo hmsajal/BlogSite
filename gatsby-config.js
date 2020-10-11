@@ -27,7 +27,7 @@ module.exports = {
       personalSite: `https://hmsajal.netlify.app`,
     },
     description: `A starter blog based on Kyle Mathews's starter blog.`,
-    siteUrl: `https://hmsblog.netlify.app/`,
+    siteUrl: `https://sajalwrites.gtsb.io`,
     social: {
       twitter: `sajal_here`,
     },
