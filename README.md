@@ -1,3 +1,5 @@
+> Personal Blog of ___hmsajal___
+
 A personal blog site for sharing personal thoughts. Built with __Gatsby__ framework based on __React__. Visit *https://sajalwrites.netlify.app* if you want to explore the blog.
 
 ----------
