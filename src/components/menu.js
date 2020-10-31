@@ -1,8 +1,8 @@
-import React from "react"
+import React from "react";
 
-import { Link, graphql, StaticQuery } from "gatsby"
+import { Link, graphql, StaticQuery } from "gatsby";
 
-import styles from "./layout.module.scss"
+import styles from "./layout.module.scss";
 
 const Menu = () => {
   return (
@@ -19,8 +19,8 @@ const Menu = () => {
           }
         }
       `}
-      render={data => {
-        const items = data.site.siteMetadata.menuItems
+      render={(data) => {
+        const items = data.site.siteMetadata.menuItems;
         return (
           <div className={styles.menu}>
             {items.map((ele, i) => (
@@ -36,10 +36,10 @@ const Menu = () => {
               </Link>
             ))}
           </div>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

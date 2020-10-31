@@ -1,6 +1,6 @@
-import React from "react"
-import { graphql, StaticQuery } from "gatsby"
-import Image from "gatsby-image"
+import React from "react";
+import { graphql, StaticQuery } from "gatsby";
+import Image from "gatsby-image";
 
 const Avatar = ({ imageAltName }) => {
   return (
@@ -25,7 +25,7 @@ const Avatar = ({ imageAltName }) => {
           }
         }
       `}
-      render={data => (
+      render={(data) => (
         <Image
           fixed={data?.avatar?.childImageSharp?.fixed}
           alt={imageAltName || `avatar`}
@@ -36,7 +36,7 @@ const Avatar = ({ imageAltName }) => {
         />
       )}
     />
-  )
-}
+  );
+};
 
-export default Avatar
+export default Avatar;

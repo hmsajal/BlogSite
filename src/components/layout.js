@@ -1,20 +1,20 @@
-import React from "react"
+import React from "react";
 
-import Header from "./header"
-import styles from "./layout.module.scss"
+import Header from "./header";
+import styles from "./layout.module.scss";
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, title, children, footerStyle }) => {
   return (
     <div className={styles.globalWrapper}>
       <Header location={location} title={title} />
       <main>{children}</main>
-      <footer>
+      <footer style={footerStyle}>
         © {new Date().getFullYear()}, Built with &hearts; by
         {` `}
         <a href="mailto:sajal.hm@gmail.com">hmsajal</a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

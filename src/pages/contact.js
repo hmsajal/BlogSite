@@ -1,79 +1,49 @@
-import React from "react"
-import { Formik } from "formik"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import styles from "./contact.module.scss"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import styles from "./contact.module.scss";
+import Openmail from "../../static/svg-icons/openmail.js";
 
 const Contact = ({ data, location }) => {
-  const title = data.site.siteMetadata?.title
+  const title = data.site.siteMetadata?.title;
   return (
     <Layout title={title} location={location}>
       <SEO title="contact" />
-      <Formik
-        initialValues={{ name: "", email: "" }}
-        validate={values => {
-          const errors = {}
-          if (!values.email) {
-            errors.email = "Required"
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = "Invalid email address"
-          }
-          return errors
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 400)
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <label>
-              <span>Name</span>
-              <input
-                type="name"
-                name="name"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.name}
-              />
-            </label>
-            {errors.name && touched.name && errors.name}
-            <label>
-              <span>Email</span>
-              <input
-                type="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-              />
-            </label>
-            {errors.email && touched.email && errors.email}
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button>
-          </form>
-        )}
-      </Formik>
+      <div className={styles.container}>
+        <h1>&bull; Say Something &bull;</h1>
+        <div className={styles.underline}></div>
+        <div className={styles.icon_wrapper}>
+          <Openmail />
+        </div>
+        <form action="#" method="post" className={styles.contactForm}>
+          <div className={styles.name}>
+            <label htmlFor="name"></label>
+            <input type="text" placeholder="Your Name" name="name" required />
+          </div>
+          <div className={styles.email}>
+            <label htmlFor="email"></label>
+            <input type="email" placeholder="Your email" name="email" />
+          </div>
+          <div className={styles.message}>
+            <label htmlFor="message"></label>
+            <textarea
+              name="message"
+              placeholder="Write something interesting..."
+              required
+            ></textarea>
+          </div>
+          <div className={styles.submit}>
+            <input type="submit" value="Send Message" />
+          </div>
+        </form>
+      </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
 
 export const contactQuery = graphql`
   query {
@@ -83,4 +53,4 @@ export const contactQuery = graphql`
       }
     }
   }
-`
+`;

@@ -1,5 +1,5 @@
-import React from "react"
-import { graphql, StaticQuery } from "gatsby"
+import React from "react";
+import { graphql, StaticQuery } from "gatsby";
 
 const Bio = () => {
   return (
@@ -19,9 +19,9 @@ const Bio = () => {
           }
         }
       `}
-      render={data => {
-        const author = data.site.siteMetadata?.author
-        const social = data.site.siteMetadata?.social
+      render={(data) => {
+        const author = data.site.siteMetadata?.author;
+        const social = data.site.siteMetadata?.social;
         return (
           <div className="bio">
             {author?.name && (
@@ -47,10 +47,10 @@ const Bio = () => {
               </p>
             )}
           </div>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default Bio
+export default Bio;

@@ -1,24 +1,24 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import styles from './blog-post.module.scss'
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import styles from "./blog-post.module.scss";
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.contentfulBlogPost
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = pageContext
+  const post = data.contentfulBlogPostBangla;
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const { previous, next } = pageContext;
   let options = {
     weekday: "long",
     day: "numeric",
     month: "short",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  }
-  const date = new Date(post.date).toLocaleString("en-GB", options)
+    year: "numeric"
+    // hour: "2-digit",
+    // minute: "2-digit",
+    // hour12: true,
+  };
+  const date = new Date(post.date).toLocaleDateString("bn-GB", options);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -73,8 +73,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </ul>
       </nav>
     </Layout>
-  )
-}
+  );
+};
 
 export const pageQuery = graphql`
   query singlePostQuery($slug: String!) {
@@ -82,14 +82,14 @@ export const pageQuery = graphql`
       siteMetadata {
         title
       }
-    }    
-    contentfulBlogPost(slug: {eq: $slug}){          
+    }
+    contentfulBlogPostBangla(slug: { eq: $slug }) {
       title
       date
       slug
       internal {
         description
-      }      
+      }
       mainText {
         childMarkdownRemark {
           html
@@ -97,8 +97,8 @@ export const pageQuery = graphql`
           timeToRead
         }
       }
-    }  
+    }
   }
-`
+`;
 
-export default BlogPostTemplate
+export default BlogPostTemplate;

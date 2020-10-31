@@ -1,7 +1,7 @@
-import React, { Fragment } from "react"
-import { Link } from "gatsby"
+import React, { Fragment } from "react";
+import { Link } from "gatsby";
 
-import styles from "./collection.module.scss"
+import styles from "./collection.module.scss";
 
 const Collection = ({ posts }) => {
   return posts.length === 0 ? (
@@ -11,56 +11,57 @@ const Collection = ({ posts }) => {
       gatsby-config.js).
     </p>
   ) : (
-    posts.map(({ node }) => {
-      const options = {
-        day: "numeric",
-        month: "numeric",
-        year: "numeric",
-      }
-      const title = node.title || node.slug
-      const date = new Date(node.date).toLocaleString("en-GB", options)
+      posts.map(({ node }) => {
+        const options = {
+          day: "numeric",
+          month: "numeric",
+          year: "numeric",
+        };
+        const title = node.title || node.slug;
+        const date = new Date(node.date)
+        // .toLocaleString("en-GB", options);
 
-      const tags = node.categories
+        const tags = node.categories;
 
-      return (
-        <article
-          key={node.slug}
-          className={styles.postListItem}
-          itemScope
-          itemType="http://schema.org/Article"
-        >
-          <header>
-            <h2>
-              <Link to={`/post/${node.slug}`} itemProp="url">
-                <span itemProp="headline">{title}</span>
-              </Link>
-            </h2>
-            <small>
-              <span className={styles.smallDate}>{date}</span>
-              <span className={styles.tags}>
-                {tags.map((item, i, arr) => (
-                  <Fragment key={i}>
-                    <Link to="/categories">{item}</Link>
-                    {arr.indexOf(item) + 1 !== arr.length ? `, ` : ` `}
-                  </Fragment>
-                ))}
-              </span>
-            </small>
-          </header>
-          <section>
-            <p
-              dangerouslySetInnerHTML={{
-                __html:
-                  node.internal.description ||
-                  node.mainText.childMarkdownRemark.excerpt,
-              }}
-              itemProp="description"
-            />
-          </section>
-        </article>
-      )
-    })
-  )
-}
+        return (
+          <article
+            key={node.slug}
+            className={styles.postListItem}
+            itemScope
+            itemType="http://schema.org/Article"
+          >
+            <header>
+              <h2>
+                <Link to={`/post/${node.slug}`} itemProp="url">
+                  <span itemProp="headline">{title}</span>
+                </Link>
+              </h2>
+              <small>
+                <span className={styles.smallDate}>{date.toLocaleDateString('bn-GB')}  </span>
+                <span className={styles.tags}>
+                  {tags.map((item, i, arr) => (
+                    <Fragment key={i}>
+                      <Link to="/categories">{item}</Link>
+                      {arr.indexOf(item) + 1 !== arr.length ? `, ` : ` `}
+                    </Fragment>
+                  ))}
+                </span>
+              </small>
+            </header>
+            <section>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html:
+                    node.internal.description ||
+                    node.mainText.childMarkdownRemark.excerpt,
+                }}
+                itemProp="description"
+              />
+            </section>
+          </article>
+        );
+      })
+    );
+};
 
-export default Collection
+export default Collection;

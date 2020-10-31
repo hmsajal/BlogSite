@@ -1,12 +1,12 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
 
-import Menu from "./menu"
-import styles from "./layout.module.scss"
+import Menu from "./menu";
+import styles from "./layout.module.scss";
 
 const Header = ({ location, title }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
+  const rootPath = `${__PATH_PREFIX__}/`;
+  const isRootPath = location.pathname === rootPath;
 
   let headerTitle = isRootPath ? (
     <h1 className={styles.mainHeading}>
@@ -16,14 +16,14 @@ const Header = ({ location, title }) => {
     <Link className={styles.headerLinkHome} to="/">
       {title}
     </Link>
-  )
+  );
 
   return (
     <header className={styles.globalHeader}>
       {headerTitle}
       <Menu location={location} />
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

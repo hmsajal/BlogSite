@@ -1,13 +1,13 @@
-const path = require(`path`)
+const path = require(`path`);
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/blog-post.js`);
 
   const result = await graphql(`
     {
-      allContentfulBlogPost {
+      allContentfulBlogPostBangla {
         edges {
           node {
             title
@@ -16,45 +16,44 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     }
-  `)
+  `);
 
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
       result.errors
-    )
-    return
+    );
+    return;
   }
 
-  const edges = result.data.allContentfulBlogPost.edges
+  const edges = result.data.allContentfulBlogPostBangla.edges;
 
   if (edges.length > 0) {
     edges.forEach(({ node }, index, edges) => {
-      
-      const previous = index === 0 ? null : edges[index - 1].node
-      const next = index === edges.length - 1 ? null : edges[index + 1].node
-      const slug = node.slug
+      const previous = index === 0 ? null : edges[index - 1].node;
+      const next = index === edges.length - 1 ? null : edges[index + 1].node;
+      const slug = node.slug;
 
       createPage({
         path: `post/${slug}`,
         component: blogPost,
         context: {
-          slug:`${slug}`,
+          slug: `${slug}`,
           previous,
           next,
         },
-      })
-    })
+      });
+    });
   }
-}
+};
 
 // exports.onCreateNode = ({ node, actions }) => {
 //   const { createNodeField } = actions
 //   const value = node.context.slug
-//   if (node.internal.type === `ContentfulBlogPost`) {
+//   if (node.internal.type === `ContentfulBlogPostBangla`) {
 //     createNodeField({
 //       name: `slug`,
-//       node,      
+//       node,
 //       value,
 //     })
 //   }
@@ -67,7 +66,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 //     type SiteSiteMetadata {
 //       author: Author
 //       siteUrl: String
-//       social: Social      
+//       social: Social
 //     }
 
 //     type Author {
@@ -78,7 +77,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 //     type Social {
 //       twitter: String
-//     }    
+//     }
 
 //     type MarkdownRemark implements Node {
 //       frontmatter: Frontmatter

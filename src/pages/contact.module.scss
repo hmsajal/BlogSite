@@ -1,23 +1,163 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 250px;
-  min-width: 250px;
-  align-self: center;
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+.container {
+  font-family: "Montserrat", Arial, sans-serif;
+  border: 0px solid #474544;
+  max-width: 768px;
+  margin: 80px auto 40px;
+  position: relative;
+
+  h1 {
+    color: #474544;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 7px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  textarea {
+    line-height: 150%;
+    height: 150px;
+    resize: none;
+    width: 100%;
+    overflow: auto;
+    color: #5a5a5a;
+    font: inherit;
+    margin: 0;
+    background: none;
+    border: none;
+    border-bottom: solid 2px #666;
+    color: #474544;
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0em 0 1.875em 0;
+    padding: 0 0 0.875em 0;
+    text-transform: uppercase;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    &:focus {
+      outline: none;
+      padding: 0 0 0.875em 0;
+    }
+  }
 }
-.form input {
-  margin-left: 20px;
-  height: 30px;
-  width: 230px;
-  outline: none;
+
+.contactForm {
+  padding: 37.5px;
+  margin: 50px 0;
+  input {
+    color: #5a5a5a;
+    font: inherit;
+    margin: 0;
+    line-height: normal;
+    &[type="text"],
+    &[type="email"] {
+      border: none;
+      border-bottom: solid 2px #666;
+      color: #474544;
+      font-size: 1em;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin: 0em 0 1.875em 0;
+      padding: 0 0 0.875em 0;
+      text-transform: uppercase;
+      width: 100%;
+      box-sizing: border-box;
+      transition: all 0.3s;
+    }
+    &[type="text"]:focus,
+    &[type="email"]:focus {
+      outline: none;
+      padding: 0 0 0.875em 0;
+    }
+  }
 }
-.form button {
-  padding: 10px 20px;
-  background: #24a0ed;
-  border: none;
-  border-radius: 2px;
-  color: white;
-  outline: none;
+
+.icon_wrapper {
+  display: block;
+  margin: 50px auto 30px;
+  height: 50px;
+  width: 50px;
+}
+
+.email {
+  float: right;
+  width: 45%;
+}
+
+.message {
+  float: none;
+}
+
+.name {
+  float: left;
+  width: 45%;
+}
+
+.subject {
+  width: 100%;
+}
+
+.telephone {
+  width: 100%;
+}
+
+.submit {
+  input {
+    background: none;
+    border: solid 2px #555;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Helvetica", Arial, sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    outline: none;
+    padding: 20px 35px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    &:hover {
+      background: #555;
+      color: #f2f3eb;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 20px auto;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    h1 {
+      font-size: 26px;
+    }
+  }
+
+  .submit input {
+    padding: 15px 25px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .icon_wrapper {
+    height: 35px;
+    width: 35px;
+  }
+
+  .container {
+    h1 {
+      font-size: 18px;
+    }
+    input[type="text"],
+    [type="email"],
+    textarea {
+      font-size: 0.875em;
+    }
+  }
 }
