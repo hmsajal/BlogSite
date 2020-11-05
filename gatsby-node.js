@@ -11,7 +11,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         edges {
           node {
             title
-            slug
+            updatedAt
           }
         }
       }
@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     edges.forEach(({ node }, index, edges) => {
       const previous = index === 0 ? null : edges[index - 1].node;
       const next = index === edges.length - 1 ? null : edges[index + 1].node;
-      const slug = node.slug;
+      const slug = node.updatedAt;
 
       createPage({
         path: `post/${slug}`,
@@ -46,52 +46,3 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   }
 };
-
-// exports.onCreateNode = ({ node, actions }) => {
-//   const { createNodeField } = actions
-//   const value = node.context.slug
-//   if (node.internal.type === `ContentfulBlogPostBangla`) {
-//     createNodeField({
-//       name: `slug`,
-//       node,
-//       value,
-//     })
-//   }
-// }
-
-// exports.createSchemaCustomization = ({ actions }) => {
-//   const { createTypes } = actions
-
-//   createTypes(`
-//     type SiteSiteMetadata {
-//       author: Author
-//       siteUrl: String
-//       social: Social
-//     }
-
-//     type Author {
-//       name: String
-//       summary: String
-//       personalSite: String
-//     }
-
-//     type Social {
-//       twitter: String
-//     }
-
-//     type MarkdownRemark implements Node {
-//       frontmatter: Frontmatter
-//       fields: Fields
-//     }
-
-//     type Frontmatter {
-//       title: String
-//       description: String
-//       date: Date @dateformat
-//     }
-
-//     type Fields {
-//       slug: String
-//     }
-//   `)
-// }

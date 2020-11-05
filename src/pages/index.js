@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import styles from './index.module.scss'
 
 
 const BlogIndex = ({ data, location }) => {
@@ -20,7 +21,7 @@ const BlogIndex = ({ data, location }) => {
       <article dangerouslySetInnerHTML={{
         __html: siteData.siteDesc.childMarkdownRemark.html
       }}
-        itemProp="articleBody"
+        itemProp="articleBody" className={styles.article}
       />
     </Layout>
   );

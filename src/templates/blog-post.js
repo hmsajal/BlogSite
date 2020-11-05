@@ -18,7 +18,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     // minute: "2-digit",
     // hour12: true,
   };
-  const date = new Date(post.date).toLocaleDateString("bn-GB", options);
+  const date = new Date(post.createdAt).toLocaleDateString("bn-GB", options);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -85,7 +85,7 @@ export const pageQuery = graphql`
     }
     contentfulBlogPostBangla(slug: { eq: $slug }) {
       title
-      date
+      createdAt
       slug
       internal {
         description

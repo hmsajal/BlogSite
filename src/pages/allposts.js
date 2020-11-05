@@ -31,7 +31,7 @@ export const mdPageQuery = graphql`
         node {
           title
           categories
-          date
+          createdAt
           slug
           internal {
             description

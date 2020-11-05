@@ -18,7 +18,7 @@ const Collection = ({ posts }) => {
           year: "numeric",
         };
         const title = node.title || node.slug;
-        const date = new Date(node.date)
+        const date = new Date(node.createdAt)
         // .toLocaleString("en-GB", options);
 
         const tags = node.categories;
