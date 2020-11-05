@@ -12,27 +12,21 @@ const Collection = ({ posts }) => {
     </p>
   ) : (
       posts.map(({ node }) => {
-        const options = {
-          day: "numeric",
-          month: "numeric",
-          year: "numeric",
-        };
-        const title = node.title || node.slug;
-        const date = new Date(node.createdAt)
-        // .toLocaleString("en-GB", options);
 
+        const title = node.title || node.updatedAt;
+        const date = new Date(node.createdAt)
         const tags = node.categories;
 
         return (
           <article
-            key={node.slug}
+            key={node.updatedAt}
             className={styles.postListItem}
             itemScope
             itemType="http://schema.org/Article"
           >
             <header>
               <h2>
-                <Link to={`/post/${node.slug}`} itemProp="url">
+                <Link to={`/post/${node.updatedAt}`} itemProp="url">
                   <span itemProp="headline">{title}</span>
                 </Link>
               </h2>

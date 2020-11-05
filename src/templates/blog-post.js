@@ -6,18 +6,18 @@ import SEO from "../components/seo";
 import styles from "./blog-post.module.scss";
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
+
   const post = data.contentfulBlogPostBangla;
   const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle || `Title`;
   const { previous, next } = pageContext;
+
   let options = {
     weekday: "long",
     day: "numeric",
     month: "short",
     year: "numeric"
-    // hour: "2-digit",
-    // minute: "2-digit",
-    // hour12: true,
   };
+
   const date = new Date(post.createdAt).toLocaleDateString("bn-GB", options);
 
   return (
@@ -85,8 +85,7 @@ export const pageQuery = graphql`
     }
     contentfulBlogPostBangla(slug: { eq: $slug }) {
       title
-      createdAt
-      slug
+      createdAt          
       internal {
         description
       }

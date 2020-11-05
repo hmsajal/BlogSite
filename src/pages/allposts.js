@@ -9,6 +9,7 @@ const Posts = ({ data, location }) => {
 
   const allposts = data.allContentfulBlogPostBangla.edges;
   const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle || `Sajal's Blog`;
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts"></SEO>
@@ -32,7 +33,7 @@ export const mdPageQuery = graphql`
           title
           categories
           createdAt
-          slug
+          updatedAt(formatString: "D-M-Y-ddd-HH-MM")
           internal {
             description
           }
