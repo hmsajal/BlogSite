@@ -4,6 +4,7 @@ import Header from "./header";
 import styles from "./layout.module.scss";
 
 const Layout = ({ location, title, children, footerStyle }) => {
+
   return (
     <div className={styles.globalWrapper}>
       <Header location={location} title={title} />

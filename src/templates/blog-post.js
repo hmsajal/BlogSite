@@ -7,7 +7,7 @@ import styles from "./blog-post.module.scss";
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPostBangla;
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle || `Title`;
   const { previous, next } = pageContext;
   let options = {
     weekday: "long",
@@ -78,9 +78,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
 export const pageQuery = graphql`
   query singlePostQuery($slug: String!) {
-    site {
-      siteMetadata {
-        title
+    allContentfulSiteMetaData {
+      nodes {
+        siteTitle      
       }
     }
     contentfulBlogPostBangla(slug: { eq: $slug }) {

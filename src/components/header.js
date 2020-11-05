@@ -13,10 +13,10 @@ const Header = ({ location, title }) => {
       <Link to="/">{title}</Link>
     </h1>
   ) : (
-    <Link className={styles.headerLinkHome} to="/">
-      {title}
-    </Link>
-  );
+      <Link className={styles.headerLinkHome} to="/">
+        {title}
+      </Link>
+    );
 
   return (
     <header className={styles.globalHeader}>

@@ -7,9 +7,11 @@ import styles from "./contact.module.scss";
 import Openmail from "../../static/svg-icons/openmail.js";
 
 const Contact = ({ data, location }) => {
-  const title = data.site.siteMetadata?.title;
+
+  const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle;
+
   return (
-    <Layout title={title} location={location}>
+    <Layout title={siteTitle} location={location}>
       <SEO title="contact" />
       <div className={styles.container}>
         <h1>&bull; Say Something &bull;</h1>
@@ -47,10 +49,10 @@ export default Contact;
 
 export const contactQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
+    allContentfulSiteMetaData {
+      nodes {
+        siteTitle      
       }
-    }
+    }       
   }
-`;
+`

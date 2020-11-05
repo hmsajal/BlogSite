@@ -6,10 +6,11 @@ import SEO from "../components/seo";
 import Collection from "../components/collection";
 
 const Posts = ({ data, location }) => {
+
   const allposts = data.allContentfulBlogPostBangla.edges;
-  const title = data.site.siteMetadata?.title || `Sajal's Blog`;
+  const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle || `Sajal's Blog`;
   return (
-    <Layout location={location} title={title}>
+    <Layout location={location} title={siteTitle}>
       <SEO title="All posts"></SEO>
       <Collection posts={allposts} />
     </Layout>
@@ -20,11 +21,11 @@ export default Posts;
 
 export const mdPageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
+    allContentfulSiteMetaData {
+      nodes {
+        siteTitle      
       }
-    }
+    }      
     allContentfulBlogPostBangla(sort: { fields: createdAt, order: DESC }) {
       edges {
         node {

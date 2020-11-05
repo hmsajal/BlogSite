@@ -9,30 +9,32 @@ const Menu = () => {
     <StaticQuery
       query={graphql`
         query menuQuery {
-          site {
-            siteMetadata {
-              menuItems {
-                path
-                name
-              }
-            }
-          }
-        }
-      `}
+          allContentfulMenuLinks {                          
+            nodes {              
+              menuItem2
+              menuItem3
+              menuItem4                  
+            }  
+          }          
+        }`
+      }
+
       render={(data) => {
-        const items = data.site.siteMetadata.menuItems;
+        const items = data.allContentfulMenuLinks.nodes[0];
+        const menuItems = Object.keys(items)
+
         return (
           <div className={styles.menu}>
-            {items.map((ele, i) => (
+            {menuItems.map((ele, i) => (
               <Link
                 key={i}
-                to={ele.path}
+                to={`/${items[ele][2]}`}
                 className={styles.menuLink}
                 getProps={({ isCurrent }) =>
                   isCurrent ? { className: styles.activeMenuLink } : {}
                 }
               >
-                {ele.name}
+                {items[ele][0]}
               </Link>
             ))}
           </div>

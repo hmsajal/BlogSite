@@ -31,13 +31,7 @@
   --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
     Times, serif;
   --font-body: var(--fontFamily-serif);
-  --font-heading: var(--fontFamily-sans);
-  --fontWeight-normal: 400;
-  --fontWeight-medium: 500;
-  --fontWeight-semibold: 600;
-  --fontWeight-bold: 700;
-  --fontWeight-extrabold: 800;
-  --fontWeight-black: 900;
+
   --fontSize-root: 16px;
   --lineHeight-none: 1;
   --lineHeight-tight: 1.1;
@@ -55,14 +49,18 @@
   --color-primary: #005b99;
   --color-text: #2e353f;
   --color-text-light: #4f5969;
-  --color-heading: #1a202c;
-  --color-heading-black: black;
   --color-accent: #d1dce5;
-  --post-heading-color: #487088;
+  /* post heading in all posts page */
+  --all-posts-heading-color: #444444;
+  --post-heading-size: 2rem;
 
   /*components' styles*/
   --menu-fontSize: 1.035rem;
   --menu-link-color: #717171;
   --menu-hover-color: #3d3d3d;
   --menu-active-color: #1b1b1b;
+
+  // heading variables//
+  --font-heading: "Li Niladri Nodia";
+  --color-heading: #2b9168;
 }

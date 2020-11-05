@@ -3,10 +3,11 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import Bio from "../components/bio";
+
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
+
+  const siteData = data.allContentfulSiteMetaData.nodes[0];
 
   const footerStyle = {
     position: 'absolute',
@@ -14,9 +15,13 @@ const BlogIndex = ({ data, location }) => {
   }
 
   return (
-    <Layout location={location} title={siteTitle} footerStyle={footerStyle} >
+    <Layout location={location} title={siteData.siteTitle} footerStyle={footerStyle} >
       <SEO title="Home" />
-      <Bio />
+      <article dangerouslySetInnerHTML={{
+        __html: siteData.siteDesc.childMarkdownRemark.html
+      }}
+        itemProp="articleBody"
+      />
     </Layout>
   );
 };
@@ -25,10 +30,16 @@ export default BlogIndex;
 
 export const indexQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
+    allContentfulSiteMetaData {
+      nodes {
+        siteTitle
+        siteUrl
+        siteDesc{
+          childMarkdownRemark {            
+            html
+          }
+        }       
       }
     }
   }
-`;
+`

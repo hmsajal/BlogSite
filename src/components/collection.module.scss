@@ -5,17 +5,22 @@
 
 .postListItem p {
   margin-bottom: var(--spacing-0);
+  font-family: "Atma";
 }
 
 .postListItem h2 {
-  font-size: var(--fontSize-4);
-  color: var(--post-heading-color);
+  --post-heading-size: 1.7rem;
+  font-family: "Li Sirajee Sheikh";
+  font-size: var(--post-heading-size);
+  color: var(--all-posts-heading-color);
   margin-bottom: var(--spacing-2);
   margin-top: var(--spacing-0);
 }
 
 .postListItem header {
   margin-bottom: var(--spacing-4);
+  font-family: "Li Shamim Chitranee";
+  font-weight: bold;
 }
 
 .smallDate {

@@ -5,7 +5,8 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
+
+  const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -20,10 +21,10 @@ export default NotFoundPage;
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
+    allContentfulSiteMetaData {
+      nodes {
+        siteTitle      
       }
-    }
+    }      
   }
-`;
+`
