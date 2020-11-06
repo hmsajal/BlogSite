@@ -33,6 +33,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const previous = index === 0 ? null : edges[index - 1].node;
       const next = index === edges.length - 1 ? null : edges[index + 1].node;
       const slug = node.updatedAt;
+      const title = node.title
 
       createPage({
         path: `post/${slug}`,
@@ -41,6 +42,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           slug: `${slug}`,
           previous,
           next,
+          title
         },
       });
     });

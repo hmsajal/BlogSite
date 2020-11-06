@@ -77,13 +77,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 };
 
 export const pageQuery = graphql`
-  query singlePostQuery($slug: String!) {
+  query singlePostQuery($title: String!) {
     allContentfulSiteMetaData {
       nodes {
         siteTitle      
       }
     }
-    contentfulBlogPostBangla(slug: { eq: $slug }) {
+    contentfulBlogPostBangla(title: {eq: $title}) {
       title
       createdAt          
       internal {
@@ -92,8 +92,7 @@ export const pageQuery = graphql`
       mainText {
         childMarkdownRemark {
           html
-          excerpt(pruneLength: 130)
-          timeToRead
+          excerpt(pruneLength: 180)          
         }
       }
     }
