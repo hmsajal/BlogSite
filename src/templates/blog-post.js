@@ -58,14 +58,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <li>
             {previous && (
-              <Link to={`/post/${previous.slug}`} rel="prev">
+              <Link to={`/post/${previous.updatedAt}`} rel="prev">
                 ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={`/post/${next.slug}`} rel="next">
+              <Link to={`/post/${next.updatedAt}`} rel="next">
                 {next.title} →
               </Link>
             )}
@@ -85,7 +85,8 @@ export const pageQuery = graphql`
     }
     contentfulBlogPostBangla(title: {eq: $title}) {
       title
-      createdAt          
+      createdAt
+      updatedAt(formatString: "D-M-Y-ddd-HH-MM")          
       internal {
         description
       }

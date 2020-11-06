@@ -4,8 +4,8 @@
   font-size: var(--post-heading-size);
 }
 .article section {
-  font-family: "Hind Siliguri";
-  font-weight: 500;
+  font-family: "Lal Sabuj";
+  font-size: 20px;
 }
 .article header p {
   font-size: var(--fontSize-2);
@@ -15,4 +15,8 @@
 
 .nav ul {
   margin: var(--spacing-0);
+}
+
+.nav li {
+  font-family: atma;
 }
