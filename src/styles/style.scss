@@ -33,11 +33,7 @@ hr {
 /* Heading */
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   font-family: var(--font-heading);
   margin-top: var(--spacing-12);
   margin-bottom: var(--spacing-6);
@@ -69,16 +65,8 @@ h6 {
   font-size: var(--fontSize-1);
 }
 
-h1 > a {
-  color: inherit;
-  text-decoration: none;
-}
-
-h2 > a,
-h3 > a,
-h4 > a,
-h5 > a,
-h6 > a {
+h1 > a,
+h2 > a {
   text-decoration: none;
   color: inherit;
 }
@@ -164,24 +152,7 @@ a:focus {
   text-decoration: none;
 }
 
-/* Custom classes */
-
-.bio {
-  display: flex;
-  margin-top: var(--spacing-8);
-  margin-bottom: var(--spacing-8);
-}
-
-.bio p {
-  margin-bottom: var(--spacing-0);
-}
-
-.bio-avatar {
-  margin-right: var(--spacing-4);
-  margin-bottom: var(--spacing-0);
-  min-width: 50px;
-  border-radius: 100%;
-}
+//special class
 
 .gatsby-highlight {
   margin-bottom: var(--spacing-8);

@@ -13,7 +13,7 @@ const Collection = ({ posts }) => {
   ) : (
       posts.map(({ node }) => {
 
-        const title = node.title || node.updatedAt;
+        const title = node.title || `Post Title`;
         const date = new Date(node.createdAt)
         const tags = node.categories;
 

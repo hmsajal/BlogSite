@@ -33,7 +33,7 @@ export const mdPageQuery = graphql`
           title
           categories
           createdAt
-          updatedAt(formatString: "D-M-Y-ddd-HH-MM")
+          updatedAt(formatString: "D-M-Y-ddd-hh-mm-a")
           internal {
             description
           }

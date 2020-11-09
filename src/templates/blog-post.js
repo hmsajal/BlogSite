@@ -9,7 +9,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   const post = data.contentfulBlogPostBangla;
   const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle || `Title`;
-  const { previous, next } = pageContext;
+  const { previous, next, slug, title } = pageContext;
 
   let options = {
     weekday: "long",
@@ -23,7 +23,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
-        title={post.title}
+        title={title}
         description={
           post.internal.description || post.mainText.childMarkdownRemark.excerpt
         }
@@ -34,7 +34,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.title}</h1>
+          <h1 itemProp="headline">{title}</h1>
           <p>{date}</p>
         </header>
         <section
@@ -58,14 +58,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <li>
             {previous && (
-              <Link to={`/post/${previous.updatedAt}`} rel="prev">
+              <Link to={`/post/${slug}`} rel="prev">
                 ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={`/post/${next.updatedAt}`} rel="next">
+              <Link to={`/post/${slug}`} rel="next">
                 {next.title} →
               </Link>
             )}
@@ -83,10 +83,8 @@ export const pageQuery = graphql`
         siteTitle      
       }
     }
-    contentfulBlogPostBangla(title: {eq: $title}) {
-      title
-      createdAt
-      updatedAt(formatString: "D-M-Y-ddd-HH-MM")          
+    contentfulBlogPostBangla(title: {eq: $title}) {      
+      createdAt        
       internal {
         description
       }

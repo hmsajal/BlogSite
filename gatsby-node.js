@@ -7,11 +7,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const result = await graphql(`
     {
-      allContentfulBlogPostBangla {
+      allContentfulBlogPostBangla(sort: {fields: createdAt, order: DESC}) {
         edges {
           node {
             title
-            updatedAt(formatString: "D-M-Y-ddd-HH-MM")
+            updatedAt(formatString: "D-M-Y-ddd-hh-mm-a")
           }
         }
       }

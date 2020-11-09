@@ -10,3 +10,5 @@ import "./src/styles/variables.scss";
 import "./src/styles/fonts.scss"
 // Highlighting for code blocks
 import "prismjs/themes/prism.css";
+//tailwind modules
+import "./src/styles/tailwind.css"
