@@ -20,7 +20,9 @@ const Contact = ({ data, location }) => {
         <div className={styles.icon_wrapper}>
           <Openmail />
         </div>
-        <form method="post" name="contact" data-netlify="true" className={styles.contactForm}>
+        <form method="post" name="contact" data-netlify="true" data-netlify-honeypot="bot-field"
+          className={styles.contactForm}
+        >
           <div className={styles.name}>
             <label htmlFor="name"></label>
             <input type="text" placeholder="নাম" name="name" required />
