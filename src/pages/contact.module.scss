@@ -4,14 +4,15 @@
   font-family: "Montserrat", Arial, sans-serif;
   border: 0px solid #474544;
   max-width: 768px;
-  margin: 80px auto 40px;
+  margin: 70px auto 40px;
   position: relative;
 
   h1 {
     color: #474544;
+    font-family: "Ekushey Mukto";
     font-size: 28px;
     font-weight: 700;
-    letter-spacing: 7px;
+    letter-spacing: 5px;
     text-align: center;
     text-transform: uppercase;
   }
@@ -32,7 +33,7 @@
     font-size: 1em;
     font-weight: 400;
     letter-spacing: 1px;
-    margin: 0em 0 1.875em 0;
+    margin: 0 0 1.875em 0;
     padding: 0 0 0.875em 0;
     text-transform: uppercase;
     width: 100%;
@@ -48,7 +49,9 @@
 .contactForm {
   composes: kwes-form from global;
   padding: 37.5px;
-  margin: 50px 0;
+  margin: 30px 0;
+  font-family: atma;
+
   input {
     color: #5a5a5a;
     font: inherit;
@@ -62,7 +65,7 @@
       font-size: 1em;
       font-weight: 400;
       letter-spacing: 1px;
-      margin: 0em 0 1.875em 0;
+      margin: 0em 0 4em 0;
       padding: 0 0 0.875em 0;
       text-transform: uppercase;
       width: 100%;
@@ -79,31 +82,9 @@
 
 .icon_wrapper {
   display: block;
-  margin: 50px auto 30px;
+  margin: 50px auto 10px;
   height: 50px;
   width: 50px;
-}
-
-.email {
-  float: right;
-  width: 45%;
-}
-
-.message {
-  float: none;
-}
-
-.name {
-  float: left;
-  width: 45%;
-}
-
-.subject {
-  width: 100%;
-}
-
-.telephone {
-  width: 100%;
 }
 
 .submit {
@@ -112,11 +93,11 @@
     border: solid 2px #555;
     cursor: pointer;
     display: inline-block;
-    font-family: "Helvetica", Arial, sans-serif;
-    font-size: 0.875em;
+    font-size: 1em;
     font-weight: bold;
     outline: none;
-    padding: 20px 35px;
+    padding: 16px 34px;
+    margin-top: 10px;
     text-transform: uppercase;
     transition: all 0.3s;
     &:hover {
