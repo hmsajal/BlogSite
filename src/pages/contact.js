@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import kwesforms from 'kwesforms'
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -8,6 +9,7 @@ import Openmail from "../../static/svg-icons/openmail.js";
 
 const Contact = ({ data, location }) => {
 
+  kwesforms.init()
   const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle;
 
   return (
@@ -19,7 +21,7 @@ const Contact = ({ data, location }) => {
         <div className={styles.icon_wrapper}>
           <Openmail />
         </div>
-        <form action="#" method="post" className={styles.contactForm}>
+        <form action="https://kwes.io/api/foreign/forms/GjZCFp5CrxmY7C0QliYd" className={styles.contactForm}>
           <div className={styles.name}>
             <label htmlFor="name"></label>
             <input type="text" placeholder="Your Name" name="name" required />
@@ -37,7 +39,7 @@ const Contact = ({ data, location }) => {
             ></textarea>
           </div>
           <div className={styles.submit}>
-            <input type="submit" value="Send Message" />
+            <button type="submit">Send Message</button>
           </div>
         </form>
       </div>

@@ -9,7 +9,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   const post = data.contentfulBlogPostBangla;
   const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle || `Title`;
-  const { previous, next, slug, title } = pageContext;
+  const { previous, next, title, slug } = pageContext;
 
   let options = {
     weekday: "long",
@@ -58,14 +58,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <li>
             {previous && (
-              <Link to={`/post/${slug}`} rel="prev">
+              <Link to={`/post/${previous.updatedAt}`} rel="prev">
                 ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={`/post/${slug}`} rel="next">
+              <Link to={`/post/${next.updatedAt}`} rel="next">
                 {next.title} →
               </Link>
             )}

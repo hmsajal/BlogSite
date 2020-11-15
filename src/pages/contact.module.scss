@@ -46,6 +46,7 @@
 }
 
 .contactForm {
+  composes: kwes-form from global;
   padding: 37.5px;
   margin: 50px 0;
   input {
@@ -106,7 +107,7 @@
 }
 
 .submit {
-  input {
+  button {
     background: none;
     border: solid 2px #555;
     cursor: pointer;
@@ -139,7 +140,7 @@
     }
   }
 
-  .submit input {
+  .submit button {
     padding: 15px 25px;
   }
 }
