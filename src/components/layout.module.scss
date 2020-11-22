@@ -1,46 +1,53 @@
 .globalWrapper {
-  margin: var(--spacing-0) auto;
-  max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10) var(--spacing-5);
+  margin: 0 auto;
+  max-width: 42rem;
+  padding: 2.5rem 1.25rem;
+  main {
+    display: block;
+  }
+  footer {
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+  }
 }
 
 .globalHeader {
-  margin-bottom: var(--spacing-12);
+  margin-bottom: 3rem;
 }
 
 .mainHeading {
-  font-family: var(--font-heading);
-  color: var(--color-heading);
-  font-size: var(--fontSize-7);
+  font-family: "Li Niladri Nodia";
+  color: #2b9168;
+  font-size: 3rem;
   margin: 0;
 }
 .headerLinkHome {
-  font-family: var(--font-heading);
+  font-family: "Li Niladri Nodia";
   text-decoration: none;
-  font-size: var(--fontSize-3);
-  color: var(--color-heading);
+  font-size: 1.42rem;
+  color: #2b9168;
 }
 
 .menu {
-  margin: var(--spacing-10) var(--spacing-0);
+  margin: 2.5rem 0;
 }
 
 .menuLinkCommon {
-  margin-right: var(--spacing-8);
+  margin-right: 2rem;
   text-decoration: none;
   font-family: "Li Sirajee Sheikh";
-  font-size: var(--menu-fontSize);
+  font-size: 1.035rem;
   font-style: italic;
 }
 .menuLink {
   composes: menuLinkCommon;
-  color: var(--menu-link-color);
+  color: #717171;
   &:hover {
     text-decoration: underline;
-    color: var(--menu-hover-color);
+    color: #3d3d3d;
   }
 }
 .activeMenuLink {
   composes: menuLinkCommon;
-  color: var(--menu-active-color);
+  color: #1b1b1b;
 }

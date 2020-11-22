@@ -1,38 +1,37 @@
 .postListItem {
-  margin-bottom: var(--spacing-8);
-  margin-top: var(--spacing-8);
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .postListItem p {
-  margin-bottom: var(--spacing-0);
+  margin-bottom: 0;
   font-family: "Lal Sabuj";
   font-size: 17px;
 }
 
 .postListItem h2 {
-  --post-heading-size: 1.7rem;
   font-family: "Li Sirajee Sheikh";
-  font-size: var(--post-heading-size);
-  margin-bottom: var(--spacing-2);
-  margin-top: var(--spacing-0);
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
 }
 
 .postListItem header {
-  margin-bottom: var(--spacing-4);
+  margin-bottom: 1rem;
   font-family: "Li Shamim Chitranee";
   font-weight: bold;
 }
 
 .smallDate {
-  margin-right: var(--spacing-2);
+  margin-right: 0.5rem;
 }
 
 .tags {
   & a {
     text-decoration: none;
-    color: var(--menu-link-color);
+    color: #717171;
     &:hover {
-      color: var(--menu-hover-color);
+      color: #3d3d3d;
       text-decoration: underline;
     }
   }

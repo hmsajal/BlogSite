@@ -9,7 +9,7 @@ const Layout = ({ location, title, children, footerStyle }) => {
     <div className={styles.globalWrapper}>
       <Header location={location} title={title} />
       <main>{children}</main>
-      <footer style={footerStyle}>
+      <footer style={footerStyle} className={styles.footer}>
         © {new Date().getFullYear()}, Built with &hearts; by
         {` `}
         <a href="mailto:sajal.hm@gmail.com">hmsajal</a>
