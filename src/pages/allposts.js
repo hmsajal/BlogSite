@@ -20,7 +20,7 @@ const Posts = ({ data, location }) => {
 
 export default Posts;
 
-export const mdPageQuery = graphql`
+export const allPostsQuery = graphql`
   query {
     allContentfulSiteMetaData {
       nodes {
@@ -39,7 +39,7 @@ export const mdPageQuery = graphql`
           }
           mainText {
             childMarkdownRemark {
-              excerpt
+              excerpt(truncate:true)
             }
           }
         }

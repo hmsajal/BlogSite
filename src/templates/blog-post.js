@@ -9,7 +9,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   const post = data.contentfulBlogPostBangla;
   const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle || `Title`;
-  const { previous, next, title, slug } = pageContext;
+  const { previous, next, title } = pageContext;
 
   let options = {
     weekday: "long",
@@ -35,7 +35,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       >
         <header>
           <h1 itemProp="headline">{title}</h1>
-          <p>{date}</p>
+          <p>- {date}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{

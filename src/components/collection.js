@@ -42,7 +42,7 @@ const Collection = ({ posts }) => {
                 </span>
               </small>
             </header>
-            <section className="description">
+            <section>
               <p
                 dangerouslySetInnerHTML={{
                   __html:

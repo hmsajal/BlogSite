@@ -29,7 +29,6 @@ const Avatar = ({ imageAltName }) => {
         <Image
           fixed={data?.avatar?.childImageSharp?.fixed}
           alt={imageAltName || `avatar`}
-          className="bio-avatar"
           imgStyle={{
             borderRadius: `50%`,
           }}
