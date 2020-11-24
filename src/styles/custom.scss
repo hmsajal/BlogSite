@@ -3,3 +3,15 @@
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+$sm-bp: 640px;
+$md-bp: 768px;
+$lg-bp: 1024px;
+$xl-bp: 1280px;
+$dxl-bp: 1536px;
+
+@mixin mediabp($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}

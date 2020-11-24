@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import styles from './aboutMe.module.scss'
-// import PillStack from '../components/pillStack'
+import PillStack from '../components/pillStack'
 
 
 const AboutMe = ({ data, location }) => {
@@ -20,7 +20,7 @@ const AboutMe = ({ data, location }) => {
         itemProp="articleBody"
         className={styles.article}
       />
-      {/* <PillStack /> */}
+      <PillStack />
     </Layout>
   )
 }
