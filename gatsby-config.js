@@ -80,7 +80,12 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify-cms`,
-    `gatsby-plugin-postcss`
+    `gatsby-plugin-postcss`,
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `hmsajal`
+      }
+    },
   ],
 };

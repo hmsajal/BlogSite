@@ -1,22 +1,21 @@
 @import "../styles/custom.scss";
 
 .globalWrapper {
-  margin: 2rem;
+  margin: 2rem 2rem 0;
   main {
     display: block;
   }
   footer {
-    padding-top: 3rem;
-    padding-bottom: 1.5rem;
+    padding: 1.5rem 0;
   }
   @include mediabp($md-bp) {
-    margin: 3.5rem 5rem;
+    margin: 3.5rem 5rem 0;
   }
   @include mediabp($lg-bp) {
-    margin: 5rem 7.5rem;
+    margin: 5rem 7.5rem 0;
   }
   @include mediabp($xl-bp) {
-    margin: 2.75rem 15rem;
+    margin: 2.75rem 15rem 0;
   }
 }
 

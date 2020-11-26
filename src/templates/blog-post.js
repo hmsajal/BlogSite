@@ -4,11 +4,13 @@ import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import styles from "./blog-post.module.scss";
+import PostComment from '../components/postComment'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   const post = data.contentfulBlogPostBangla;
-  const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle || `Title`;
+  const siteUrl = data.allContentfulSiteMetaData.nodes[0].siteUrl
+  const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle || `Site Title`;
   const { previous, next, title } = pageContext;
 
   let options = {
@@ -44,7 +46,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           itemProp="articleBody"
         />
         <hr />
-        <footer />
       </article>
       <nav className={styles.nav}>
         <ul
@@ -72,6 +73,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </li>
         </ul>
       </nav>
+      <PostComment location={location} url={siteUrl} title={title} />
     </Layout>
   );
 };
@@ -80,7 +82,8 @@ export const pageQuery = graphql`
   query singlePostQuery($title: String!) {
     allContentfulSiteMetaData {
       nodes {
-        siteTitle      
+        siteTitle  
+        siteUrl    
       }
     }
     contentfulBlogPostBangla(title: {eq: $title}) {      
