@@ -73,3 +73,5 @@ yarn-error.log
 
 #environment variable for contentful
 .env.development
+# Local Netlify folder
+.netlify
