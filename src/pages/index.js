@@ -3,44 +3,51 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import styles from './index.module.scss'
+import Collection from "../components/collection";
 
 
-const BlogIndex = ({ data, location }) => {
+export default ({ data, location }) => {
 
-  const siteData = data.allContentfulSiteMetaData.nodes[0];
-
-  const footerStyle = {
-    position: 'absolute',
-    bottom: '10px'
-  }
+  const metaData = data.allContentfulSiteMetaData.nodes[0]
+  const allposts = data.allContentfulBlogPostBangla.edges;
 
   return (
-    <Layout location={location} title={siteData.siteTitle} footerStyle={footerStyle} >
-      <SEO title="Home" />
-      <article dangerouslySetInnerHTML={{
-        __html: siteData.siteDesc.childMarkdownRemark.html
-      }}
-        itemProp="articleBody" className={styles.article}
-      />
+    <Layout location={location} title={metaData.siteTitle || `Sajal's Blog`}>
+      <SEO title="All posts"></SEO>      
+      <Collection posts={allposts} />
     </Layout>
   );
 };
 
-export default BlogIndex;
-
-export const indexQuery = graphql`
+export const allPostsQuery = graphql`
   query {
     allContentfulSiteMetaData {
       nodes {
-        siteTitle
-        siteUrl
+        siteTitle   
         siteDesc{
           childMarkdownRemark {            
             html
           }
-        }       
+        }    
+      }
+    }      
+    allContentfulBlogPostBangla(sort: { fields: createdAt, order: DESC }) {
+      edges {
+        node {
+          title
+          categories
+          createdAt
+          updatedAt(formatString: "D-M-Y-ddd-hh-mm-a")
+          internal {
+            description
+          }
+          mainText {
+            childMarkdownRemark {
+              excerpt(truncate:true)
+            }
+          }
+        }
       }
     }
   }
-`
+`;

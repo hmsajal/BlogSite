@@ -11,9 +11,9 @@ const Menu = () => {
         query menuQuery {
           allContentfulMenuLinks {                          
             nodes {              
+              menuItem1
               menuItem2
-              menuItem3
-              menuItem4                  
+              menuItem3                  
             }  
           }          
         }`
@@ -28,7 +28,7 @@ const Menu = () => {
             {menuItems.map((ele, i) => (
               <Link
                 key={i}
-                to={`/${items[ele][2]}`}
+                to={items[ele][2] ? `/${items[ele][2]}` : `/`}
                 className={styles.menuLink}
                 getProps={({ isCurrent }) =>
                   isCurrent ? { className: styles.activeMenuLink } : {}

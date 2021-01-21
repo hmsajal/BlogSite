@@ -2,11 +2,12 @@ import React from 'react'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import styles from './aboutMe.module.scss'
 import PillStack from '../components/pillStack'
 
+import styles from './about.module.scss'
 
-const AboutMe = ({ data, location }) => {
+
+const About = ({ data, location }) => {
 
   const siteTitle = data.allContentfulSiteMetaData.nodes[0].siteTitle
   const authorInfo = data.allContentfulSiteAuthor.nodes[0].about.childMarkdownRemark.html
@@ -24,6 +25,8 @@ const AboutMe = ({ data, location }) => {
     </Layout>
   )
 }
+
+export default About
 
 export const mdPageQuery = graphql`
   query {
@@ -46,5 +49,3 @@ export const mdPageQuery = graphql`
     }
   }`
 
-
-export default AboutMe

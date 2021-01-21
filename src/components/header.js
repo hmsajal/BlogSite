@@ -19,8 +19,8 @@ const Header = ({ location, title }) => {
     );
 
   return (
-    <header className={styles.globalHeader}>
-      {headerTitle}
+    <header className={styles.globalHeader}>      
+      {headerTitle}         
       <Menu location={location} />
     </header>
   );
